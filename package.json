@@ -1,0 +1,25 @@
+{
+  "name": "jarvis-ts-example-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsc && node dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duke79/jarvis-ts-example-plugin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duke79/jarvis-ts-example-plugin/issues"
+  },
+  "homepage": "https://github.com/duke79/jarvis-ts-example-plugin#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.10",
+    "tslint": "^6.1.3",
+    "typescript": "^4.1.2"
+  }
+}
