@@ -1,4 +1,4 @@
-import { OptionItem, RestResponseMap } from "./types";
+import { OptionItem, RestResponseMap, RestEventMap } from "./types";
 import { query } from "express";
 
 export class Service {
@@ -17,13 +17,13 @@ export class Service {
 
   private init = async () => {};
 
-  public onSelection = async (args?: { option: OptionItem }): Promise<RestResponseMap['onSelection']> => {
+  public onSelection = async (args?: RestEventMap['onSelection']): Promise<RestResponseMap['onSelection']> => {
     return {
       options: [args?.option as OptionItem],
     };
   };
 
-  public onQuery = async (args?: { query: string }): Promise<RestResponseMap['onQuery']> => {
+  public onQuery = async (args?: RestEventMap['onQuery']): Promise<RestResponseMap['onQuery']> => {
     return {
       options: [{
         summary: args?.query || '',
