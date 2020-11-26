@@ -36,7 +36,7 @@ jobs:
 
       - name: Zip files
         run: |
-          zip --junk-paths plugin main.js
+          zip --junk-paths plugin dist/main.js
 
       - name: Create Release
         id: create_release
