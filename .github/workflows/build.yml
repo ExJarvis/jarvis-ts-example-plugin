@@ -1,0 +1,36 @@
+name: Plugin Build
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+    # Inputs the workflow accepts.
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v2
+    
+      - name: Install Node.js, NPM and Yarn
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+    
+      - name: Build
+        run: |
+          npm i
+          npm test
+          npm run build:prod
+
+      - name: Upload Linux Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist
