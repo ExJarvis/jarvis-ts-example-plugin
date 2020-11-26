@@ -1,4 +1,4 @@
-import { OptionItem, RestResponseMap } from "./jarvis.types";
+import { OptionItem, RestResponseMap } from "./types";
 import { query } from "express";
 
 export class Service {
@@ -29,12 +29,6 @@ export class Service {
         summary: args?.query || '',
         details: args?.query || '',
       }]
-    };
-  };
-
-  public onExpansion = async (args?: { option: OptionItem }): Promise<RestResponseMap['onExpansion']> => {
-    return {
-      options: [args?.option as OptionItem],
     };
   };
 }

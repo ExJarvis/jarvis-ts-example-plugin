@@ -10,9 +10,6 @@ export type RestEventMap = Partial<{
   onSelection: {
     option: OptionItem,
   };
-  onExpansion: {
-    option: OptionItem,
-  },
 }>;
 
 export type RestResponseMap = Partial<{
@@ -22,7 +19,4 @@ export type RestResponseMap = Partial<{
   onSelection: {
     options?: OptionItem[],
   };
-  onExpansion: {
-    options?: OptionItem[],
-  },
 }>;

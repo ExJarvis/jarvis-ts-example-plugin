@@ -1,6 +1,6 @@
 import express from "express";
 import { AddressInfo } from "net";
-import { RestEventMap, OptionItem, RestResponseMap } from "./jarvis.types";
+import { RestEventMap, OptionItem, RestResponseMap } from "./types";
 import { Service } from "./service";
 
 export const app = express();
@@ -34,17 +34,9 @@ app.get("/event", async (req, res) => {
   }
 
   if (Object.keys(events).includes("onSelection")) {
-    if(typeof events.onSelection?.option === 'string') {
+    if(typeof events.onSelection?.option?.summary === 'string') {
       response.onSelection = await Service.getInstance().onSelection({
         option: events.onSelection.option,
-      })
-    }
-  }
-
-  if (Object.keys(events).includes("onExpansion")) {
-    if(typeof events.onExpansion?.option === 'string') {
-      response.onExpansion = await Service.getInstance().onExpansion({
-        option: events.onExpansion.option,
       })
     }
   }
