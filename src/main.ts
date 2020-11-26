@@ -1,2 +1,4 @@
+import './app';
+
 console.log('hello world');
 console.log(process.argv);
