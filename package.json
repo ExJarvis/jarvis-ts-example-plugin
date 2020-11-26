@@ -43,6 +43,7 @@
     "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "get-port": "^5.1.1"
   }
 }
