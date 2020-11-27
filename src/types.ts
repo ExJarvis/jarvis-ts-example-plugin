@@ -8,15 +8,37 @@ export type RestEventMap = Partial<{
     query: string;
   };
   onSelection: {
-    option: OptionItem,
+    option: OptionItem;
   };
 }>;
 
 export type RestResponseMap = Partial<{
   onQuery: {
-    options?: OptionItem[],
+    options?: OptionItem[];
   };
   onSelection: {
-    options?: OptionItem[],
+    options?: OptionItem[];
   };
 }>;
+
+export type PushEventMap = Partial<{
+  onOptionsUpdated: {
+    options: OptionItem[];
+  };
+  onHandShake: {
+    keyword?: string;
+  };
+}>;
+
+export type PushResponseMap = Partial<{
+  onOptionsUpdated: {};
+  onHandShake: {
+    status: 'SUCCEEDED' | 'FAILED',
+    message: string;
+  },
+}>;
+
+export type APIResponse<T> = {
+  status: "SUCCEEDED" | "FAILED";
+  data: T;
+};

@@ -1,4 +1,6 @@
-import './app';
+import { runApp } from './app';
 
-console.log('hello world');
-console.log(process.argv);
+runApp();
+
+// console.log('hello world');
+// console.log(process.argv);

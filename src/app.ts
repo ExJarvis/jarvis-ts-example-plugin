@@ -1,7 +1,7 @@
 import express from "express";
 import { AddressInfo } from "net";
 import { RestEventMap, OptionItem, RestResponseMap } from "./types";
-import { Service } from "./service";
+import { Service } from "./event.service";
 import getPort from "get-port";
 
 export const app = express();
@@ -55,7 +55,7 @@ const getRange = ({ min, max }: { min: number; max: number }) => {
   return list;
 };
 
-const run = async () => {
+export const runApp = async () => {
   const preferredPort = await getPort({
     port: getRange({ min: 51000, max: 55200 }),
   });
@@ -65,5 +65,3 @@ const run = async () => {
 
   const port = (listener.address() as AddressInfo)?.port;
 };
-
-run();
