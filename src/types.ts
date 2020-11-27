@@ -26,7 +26,6 @@ export type ServerEventMap = Partial<{
     options: OptionItem[],
   },
   onRegister: {
-    port: number,
     keyword?: string;
   },
 }>;

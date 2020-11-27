@@ -1,6 +1,6 @@
-import { runApp } from './app';
+import { runPluginApp } from './push.app';
 
-runApp();
+runPluginApp();
 
 // console.log('hello world');
 // console.log(process.argv);
