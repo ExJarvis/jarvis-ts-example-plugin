@@ -26,6 +26,7 @@ export type PushEventMap = Partial<{
     options: OptionItem[];
   };
   onHandShake: {
+    port: number,
     keyword?: string;
   };
 }>;

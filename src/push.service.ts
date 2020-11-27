@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import { PushEventMap, PushResponseMap, APIResponse } from "./types";
-
 export class PushService {
   private static instance: PushService;
   private HOST = "http://localhost:7979";
@@ -21,9 +20,7 @@ export class PushService {
   private callApi = async (
     params?: PushEventMap
   ): Promise<AxiosResponse<PushResponseMap>> => {
-    const res = await axios.get<PushResponseMap>(`${this.HOST}/event`, {
-      params,
-    });
+    const res = await axios.post<PushResponseMap>(`${this.HOST}/event`, params);
     return res;
   };
 

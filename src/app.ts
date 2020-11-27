@@ -28,7 +28,7 @@ app.get("/event", async (req, res) => {
     )} received from the app!`;
   }
 
-  if (Object.keys(events).includes("onQuery")) {
+  if (events.onQuery) {
     if (typeof events.onQuery?.query === "string") {
       response.onQuery = await Service.getInstance().onQuery({
         query: events.onQuery?.query,
@@ -36,7 +36,7 @@ app.get("/event", async (req, res) => {
     }
   }
 
-  if (Object.keys(events).includes("onSelection")) {
+  if (events.onSelection) {
     if (typeof events.onSelection?.option?.summary === "string") {
       response.onSelection = await Service.getInstance().onSelection({
         option: events.onSelection.option,
