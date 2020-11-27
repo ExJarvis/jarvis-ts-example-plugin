@@ -25,19 +25,26 @@ export class PushService {
 
   private init = async () => {
     this.doRegister({
-      keyword: 'd',
+      keyword: "d",
     });
   };
 
   public emitEvent = (params?: ServerEventMap) => {
-    return params && Object.keys(params).length && this.io.emit("event", params);
+    return (
+      params && Object.keys(params).length && this.io.emit("event", params)
+    );
   };
 
   private doRegister = (args?: ServerEventMap["onRegister"]) => {
     return this.emitEvent({ onRegister: args });
   };
 
-  public onWelcome = async (args?: ClientEventMap["onWelcome"]) => {};
+  public onWelcome = async (args?: ClientEventMap["onWelcome"]) => {
+    if (args?.status === "FAILED") {
+      console.error(args.message);
+      this.io.close();
+    }
+  };
 
   public onQuery = async (
     args?: ClientEventMap["onQuery"]
