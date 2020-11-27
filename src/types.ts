@@ -21,19 +21,24 @@ export type RestResponseMap = Partial<{
   };
 }>;
 
-export type PushEventMap = Partial<{
+export type ServerEventMap = Partial<{
   onOptionsUpdated: {
-    options: OptionItem[];
-  };
-  onHandShake: {
+    options: OptionItem[],
+  },
+  onRegister: {
     port: number,
     keyword?: string;
-  };
+  },
 }>;
 
-export type PushResponseMap = Partial<{
-  onOptionsUpdated: {};
-  onHandShake: {
+export type ClientEventMap = Partial<{
+  onQuery: {
+    query: string;
+  };
+  onSelection: {
+    option: OptionItem,
+  };
+  onWelcome: {
     status: 'SUCCEEDED' | 'FAILED',
     message: string;
   },

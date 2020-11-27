@@ -1,8 +1,11 @@
 import axios, { AxiosResponse } from "axios";
-import { PushEventMap, PushResponseMap, APIResponse } from "./types";
+import { ServerEventMap, ClientEventMap, APIResponse } from "./types";
+import socketIO from 'socket.io-client';
+
 export class PushService {
   private static instance: PushService;
   private HOST = "http://localhost:7979";
+  private io = socketIO.connect(this.HOST);
 
   private constructor() {
     this.init();
@@ -17,22 +20,15 @@ export class PushService {
 
   private init = async () => {};
 
-  private callApi = async (
-    params?: PushEventMap
-  ): Promise<AxiosResponse<PushResponseMap>> => {
-    const res = await axios.post<PushResponseMap>(`${this.HOST}/event`, params);
-    return res;
+  private emitEvent = (
+    params?: ServerEventMap
+  ) => {
+    return this.io.emit('event', params); 
   };
 
-  public doHandShake = async (
-    args?: PushEventMap["onHandShake"]
-  ): Promise<APIResponse<PushResponseMap["onHandShake"]>> => {
-    const res = await this.callApi({
-      onHandShake: args,
-    });
-    return {
-      status: res.status >= 200 && res.status < 300 ? "SUCCEEDED" : "FAILED",
-      data: res.data?.onHandShake,
-    };
+  public doHandShake = (
+    args?: ServerEventMap["onRegister"]
+  ) => {
+    return this.emitEvent({ onRegister: args });
   };
 }

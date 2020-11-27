@@ -8,9 +8,5 @@ describe("Test push events", () => {
       port,
       keyword: 'd',
     });
-    assert(res.data?.status === 'SUCCEEDED');
-    console.log(res.data.message);
-    assert(res.data.message === `Welcome ::ffff:127.0.0.1:${port}\nYour keyword 'd' has been registered!`);
-    // console.log(res);
   });
 });
